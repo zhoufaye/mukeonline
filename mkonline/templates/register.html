@@ -24,7 +24,7 @@
                 <span class="word2">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>
                 <input type="password" name="password_l" id="password_l" placeholder="请输入您的密码"/>
             </div>
-            <div class="error btns login-form-tips" id="jsLoginTips"></div> <!--登录错误提示-->
+            <div class="error btns login-form-tips" id="jsLoginTips">{{ msg }}</div> <!--登录错误提示-->
             <div class="btns">
                 <span><input type="checkbox" id="jsAutoLogin" />&nbsp;自动登录</span>
                 <span class="forget btn fr">忘记密码</span>
@@ -135,15 +135,15 @@
                 <div class="tab-form">
                     <form id="email_register_form" method="post" action="{% url 'register' %}" autocomplete="off">
                         <input type='hidden' name='csrfmiddlewaretoken' value='gTZljXgnpvxn0fKZ1XkWrM1PrCGSjiCZ' />
-                        <div class="form-group marb20 ">
+                        <div class="form-group marb20 {% if register_form.errors.username %} errorput {% endif %}" >
                             <label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
-                            <input  type="text" id="id_email" name="username" value="None" placeholder="请输入您的邮箱地址" />
+                            <input  type="text" id="id_email" name="username" placeholder="请输入您的邮箱地址" />
                         </div>
-                        <div class="form-group marb8 ">
+                        <div class="form-group marb8 {% if register_form.errors.password %} errorput {% endif %} ">
                             <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-                            <input type="password" id="id_password" name="password"  value="None" placeholder="请输入6-20位非中文字符密码" />
+                            <input type="password" id="id_password" name="password"  value="{{ register_form.password.value}}" placeholder="请输入6-20位非中文字符密码" />
                         </div>
-                        <div class="form-group marb8 captcha1 ">
+                        <div class="form-group marb8 captcha1 {% if register_form.errors.captcha %} errorput {% endif %} ">
                             <label>验&nbsp;证&nbsp;码</label>
        <!--                     <img src="/captcha/image/2f3f82e5f7a054bf5caa93b9b0bb6cc308fb7011/" alt="captcha" class="captcha" /> <input id="id_captcha_0" name="captcha_0" type="hidden" value="2f3f82e5f7a054bf5caa93b9b0bb6cc308fb7011" /> <input autocomplete="off" id="id_captcha_1" name="captcha_1" type="text" /> -->
                             {{ register_form.captcha }}

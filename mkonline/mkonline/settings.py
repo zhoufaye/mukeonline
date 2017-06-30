@@ -141,3 +141,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,"static"),
 )
+
+EMAIL_HOST="smtp.a8.com"
+EMAIL_PORT=25
+EMAIL_HOST_USER="monitor"
+EMAIL_HOST_PASSWORD="a8szU2016"
+EMAIL_USE_TLS=False
+EMAIL_FROM="monitor@a8.com"
+
